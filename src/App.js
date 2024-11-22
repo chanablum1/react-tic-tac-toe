@@ -3,17 +3,6 @@ import { useState } from "react";
 import "./styles.css";
 
 function Square({ value, onSquareClick }) {
-  // const [value, setValue] = useState(null);
-  // function handleClick() {
-  //   if (value === null) {
-  //     setValue("X");
-  //     // } else if (value === "X") {
-  //     //   setValue("O");
-  //     // } else {
-  //     //   setValue(null);
-  //   }
-  // }
-
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -28,6 +17,7 @@ export default function Board() {
 
   function handleClick(i) {
       console.log("hi is click now")
+      // כאן בודק את הריבוע מלא או שהיה ניצחון
       if (squares[i] || calculateWinner(squares)) {
         return;
       }
@@ -37,7 +27,6 @@ export default function Board() {
       } else {
         nextSquares[i] = "O";
       }
-      // nextSquares[i] = "X";
       setSquares(nextSquares);
       setXIsNext(!xIsNext);
 
@@ -49,9 +38,6 @@ export default function Board() {
     } else {
       status = 'Next player: ' + (xIsNext ? 'X' : 'O');
     }
-
-    // const [squares, setSquares] = useState(Array(9).fill(null));
-
 
     return (
       <div>
